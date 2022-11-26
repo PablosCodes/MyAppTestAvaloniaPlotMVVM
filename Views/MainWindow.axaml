@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MyAppTestAvaloniaPlotMVVM.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MyAppTestAvaloniaPlotMVVM.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="MyAppTestAvaloniaPlotMVVM">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid RowDefinitions="Auto, *, Auto">
+		<Grid Grid.Row="0" >
+
+			<ListBox>
+				<TextBlock Text="{Binding Clock}" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Blue"/>
+				<TextBlock Text="{Binding Message}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				<Button Content="{Binding Message}" Command="{Binding ButtonClicked}"/>
+				<Button Content="Wykres" Width="200" Foreground="White" Background="Red" Command="{Binding ButtonClicked2}"/>
+			</ListBox>
+		</Grid>
+
+		<Grid Grid.Row="1" >
+
+			<ScottPlot:AvaPlot Name="AvaPlot1"/>
+		</Grid>
+	</Grid>
+
+</Window>
